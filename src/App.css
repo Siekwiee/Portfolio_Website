@@ -1,38 +1,331 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Gradient Wave Background */
+.gradient-wave {
+  background: linear-gradient(135deg, #001219 0%, #005f73 40%, #0a9396 100%);
+  position: relative;
+}
+
+.gradient-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(148, 210, 189, 0.1) 0%,
+    rgba(0, 18, 25, 0) 50%
+  );
+  animation: pulse 15s ease infinite;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 20px 0;
+  position: relative;
+  margin-top: -4vh;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-photo {
+  flex: 0 0 300px;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.intro-text {
+  flex: 2;
+  text-align: left;
+  color: #e9d8a6;
+}
+
+.intro-text h1 {
+  font-size: 3rem;
+  margin: 0 0 10px;
+  color: #94d2bd;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin: 0 0 20px;
+  color: #0a9396;
+}
+
+.brief-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94d2bd;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgba(10, 147, 150, 0.1);
+  border: 1px solid rgba(148, 210, 189, 0.2);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.social-link svg {
+  font-size: 1.2em;
+}
+
+.social-link:hover {
+  background: rgba(10, 147, 150, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(148, 210, 189, 0.1);
+}
+
+.social-link:active {
+  transform: translateY(0);
+}
+
+/* Blog Section */
+.blog-section {
+  min-height: 100vh;
+  padding: 4vh 20px 80px;
+  background: rgba(0, 18, 25, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+}
+
+.blog-section h2 {
+  color: #94d2bd;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-card {
+  background: rgba(0, 95, 115, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: left;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 210, 189, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card h3 {
+  color: #94d2bd;
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+
+.blog-date {
+  color: #0a9396;
+  font-size: 0.9rem;
+  margin: 0 0 15px;
+}
+
+.blog-excerpt {
+  color: #e9d8a6;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.read-more {
+  color: #94d2bd;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: #0a9396;
+}
+
+/* About Section */
+.about-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.about-section h2 {
+  color: #94d2bd;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.about-text {
+  text-align: left;
+  color: #e9d8a6;
+  line-height: 1.6;
+}
+
+.about-text p {
+  margin-bottom: 20px;
+}
+
+.skills h3 {
+  color: #94d2bd;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: rgba(10, 147, 150, 0.2);
+  color: #94d2bd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(148, 210, 189, 0.2);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #94d2bd;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  background: rgba(0, 18, 25, 0.2);
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 210, 189, 0.2);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  animation: bounce 2s infinite;
+  z-index: 10;
 }
 
-.App-link {
-  color: #61dafb;
+.blog-section .scroll-indicator {
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.scroll-indicator:hover {
+  opacity: 1;
+  background: rgba(0, 18, 25, 0.4);
+  transform: translateX(-50%) translateY(-5px);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Section specific scroll indicator positioning */
+.hero-section .scroll-indicator,
+.about-section .scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .profile-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .intro-text {
+    text-align: center;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-photo {
+    flex: 0 0 250px;
   }
 }
